@@ -1,3 +1,5 @@
+use std::str;
+
 fn ex1_strings() {
     let mut s : String = String::from("hello");
     s.push_str(", world!");
@@ -82,13 +84,43 @@ fn ex7_2_change(some_string: &mut String) {
     some_string.push_str(", world!");
 }
 
+fn ex8_1_slices() {
+    let s = String::from("hello world");
+    let fw = ex8_2_first_word(&s);
+    println!("{}", fw);
+}
 
+fn ex8_2_first_word(some_string: &String) -> usize {
+    let s_bytes = some_string.as_bytes();
+    for (i, &item) in s_bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+    s_bytes.len()
+}
 
+fn ex9_1_slices() {
+    let s = String::from("hello world");
+
+    let hello = ex9_2_first_word(&s);
+    println!("{}", hello);
+}
+
+fn ex9_2_first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+    &s[..]
+}
 
 
 
 
 // Main function bellow
 fn main() {
-    ex6_1_ref_borrow();
+    ex9_1_slices();
 }
