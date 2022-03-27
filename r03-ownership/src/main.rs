@@ -1,8 +1,3 @@
-
-fn main() {
-    ex4_returns();
-}
-
 fn ex1_strings() {
     let mut s : String = String::from("hello");
     s.push_str(", world!");
@@ -55,4 +50,31 @@ fn ex4_2_gives_ownership() -> String {
 
 fn ex4_3_takes_and_gives_back(a_string: String) -> String {
     a_string
+}
+
+fn ex5_1_returns() {
+    let s1 = String::from("hello");
+    let (s2, len) = ex5_2_calculate_length(s1);
+    println!("The length of '{}' is {}", s2, len);
+}
+
+fn ex5_2_calculate_length(some_string: String) -> (String, usize) {
+    let len = some_string.len();
+    (some_string, len)
+}
+
+fn ex6_1_ref_borrow() {
+    let s1 = String::from("hello");
+    let len = ex6_2_calculate_length(&s1);
+    println!("The length of '{}' if {}", s1, len);
+}
+
+fn ex6_2_calculate_length(some_string: &String) -> usize {
+    some_string.len()
+}
+
+
+// Main function bellow
+fn main() {
+    ex6_1_ref_borrow();
 }
