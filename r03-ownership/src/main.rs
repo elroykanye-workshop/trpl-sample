@@ -73,6 +73,20 @@ fn ex6_2_calculate_length(some_string: &String) -> usize {
     some_string.len()
 }
 
+fn ex7_1_ref_borrow() {
+    let mut s = String::from("hello");
+    ex7_2_change(&mut s);
+}
+
+fn ex7_2_change(some_string: &mut String) {
+    some_string.push_str(", world!");
+}
+
+
+
+
+
+
 
 // Main function bellow
 fn main() {
